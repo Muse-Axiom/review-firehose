@@ -61,8 +61,8 @@ async def main() -> None:
         state_key = str(inp.get("stateKey", "review-firehose-state")).strip()
 
         seen: set[str] = set()
+        store = await Actor.open_key_value_store(name="review-firehose")
         if mode == "delta":
-            store = await Actor.open_key_value_store()
             saved = await store.get_value(state_key)
             if isinstance(saved, dict):
                 seen = set(saved.get("seenIds", []))
@@ -96,7 +96,6 @@ async def main() -> None:
             await Actor.charge({"eventName": "review"})
 
         if mode == "delta":
-            store = await Actor.open_key_value_store()
             # keep the window bounded so state stays small
             await store.set_value(state_key, {"seenIds": sorted(seen)[-5000:]})
 
