@@ -40,7 +40,7 @@ def normalize(entry: dict, app_id: str, country: str) -> dict:
         "appId": app_id,
         "country": country,
         "author": txt(entry.get("author", {}).get("name")),
-        "rating": int(txt(entry.get("im:rating"), "0") or 0),
+        "rating": int(txt(entry.get("im:rating")) or 0),
         "title": txt(entry.get("title")),
         "text": txt(entry.get("content")),
         "version": txt(entry.get("im:version")),
