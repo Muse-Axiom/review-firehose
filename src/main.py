@@ -4,7 +4,8 @@ Modes:
   full  - scrape recent reviews (up to maxReviews)
   delta - return only reviews not seen in previous runs (state in KVS)
 
-Pricing: one event per review pushed to the dataset (pay-per-event).
+Pricing: pay-per-event, billed by the platform per review pushed to the
+dataset (event "apify-default-dataset-item", $0.00008/review at launch).
 """
 import asyncio
 import logging
@@ -93,7 +94,8 @@ async def main() -> None:
 
         for r in reviews:
             await Actor.push_data(r)
-            await Actor.charge({"eventName": "review"})
+        # Pricing: pay-per-event is billed by the platform per dataset item
+        # (event "apify-default-dataset-item"), so no explicit charge() call.
 
         if mode == "delta":
             # keep the window bounded so state stays small
