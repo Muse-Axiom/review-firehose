@@ -1,0 +1,45 @@
+{
+    "title": "Review Firehose input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "appId": {
+            "title": "App Store app ID",
+            "description": "Numeric Apple App Store app ID (e.g. 310633997 for WhatsApp).",
+            "type": "string",
+            "editor": "textfield"
+        },
+        "country": {
+            "title": "Store country",
+            "description": "Two-letter country code of the App Store to query.",
+            "type": "string",
+            "default": "us",
+            "editor": "textfield"
+        },
+        "maxReviews": {
+            "title": "Max reviews",
+            "description": "Maximum reviews to return per run (Apple caps at ~500).",
+            "type": "integer",
+            "default": 200,
+            "minimum": 1,
+            "maximum": 500,
+            "editor": "number"
+        },
+        "mode": {
+            "title": "Mode",
+            "description": "full = all recent reviews. delta = only reviews not seen in previous runs (tracked in key-value store).",
+            "type": "string",
+            "default": "delta",
+            "enum": ["full", "delta"],
+            "editor": "select"
+        },
+        "stateKey": {
+            "title": "State key",
+            "description": "Key-value store key for delta tracking. Use one per app+country you track.",
+            "type": "string",
+            "default": "review-firehose-state",
+            "editor": "textfield"
+        }
+    },
+    "required": ["appId"]
+}
