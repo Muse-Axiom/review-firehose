@@ -1,0 +1,9 @@
+{
+    "actorSpecification": 1,
+    "name": "review-firehose",
+    "title": "Review Firehose — App Store review tracking",
+    "description": "Track Apple App Store reviews over time. One-shot scrape or recurring delta mode that returns only new reviews since the last run. Priced per review.",
+    "version": "0.1",
+    "buildTag": "latest",
+    "dockerfile": "./Dockerfile"
+}
