@@ -1,7 +1,1 @@
-{
-    "review": {
-        "eventTitle": "Review delivered",
-        "eventDescription": "One App Store review delivered to the dataset.",
-        "eventPriceUsd": 0.00008
-    }
-}
+{"_note":"DRAFT - documentation only. Pay-per-event events are configured in Apify Console (Publication -> Monetization), not from this file. The actor code charges this event explicitly via push_data(..., charged_event_name=\"review\"). Price below is not approved.","review":{"eventDescription":"One App Store review delivered to the dataset.","eventPriceUsd":0.00008,"eventTitle":"Review delivered"}}
