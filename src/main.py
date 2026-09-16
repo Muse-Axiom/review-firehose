@@ -1,9 +1,11 @@
 """Review Firehose v0.12 — track the reviews Apple surfaces on App Store pages.
 
 Data source: the localized App Store webpage's server-rendered JSON
-(`<script id="serialized-server-data">` on apps.apple.com). Apple's legacy
-RSS customer-review feed silently returns zero entries as of 2026, so the
-page JSON is the source.
+(`<script id="serialized-server-data">` on apps.apple.com).
+(Correction 2026-09-16: Apple's RSS review feed was re-verified working
+from Apify's network; the earlier claim that it was deprecated and
+returned zero entries was wrong and is removed. The engine's data
+source is under review.)
 
 What the product is: Apple curates a "most helpful" review set per
 storefront and platform. This actor fetches three review pages per

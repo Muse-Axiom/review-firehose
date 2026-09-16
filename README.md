@@ -12,7 +12,7 @@ Know the moment Apple changes which reviews it shows on your App Store page — 
 
 **Output:** one dataset item per review — reviewId, appId, country, author, rating, title, text, version, voteCount, updated. The key-value store also keeps a per-storefront ratings snapshot (average, total count, histogram) from each run.
 
-**Data source:** Apple's App Store webpage server-rendered JSON (`apps.apple.com`). Apple deprecated the old RSS customerreviews endpoint (it silently returns zero entries as of 2026). `version` and `voteCount` are not exposed by Apple and are returned empty/0 for schema compatibility. `updated` is the review's posted date — Apple exposes no last-updated time.
+**Data source:** Apple's App Store webpage server-rendered JSON (`apps.apple.com`), reflecting the review set Apple surfaces per storefront. `version` and `voteCount` are not exposed by Apple and are returned empty/0 for schema compatibility. `updated` is the review's posted date — Apple exposes no last-updated time. (Correction 2026-09-16: an earlier version of this README claimed Apple's RSS review feed was deprecated and returned zero entries. Re-tested from Apify's network on 2026-09-16 — the feed works, so that claim was wrong and is removed. The engine's data source is under review.)
 
 **Honest limits:** this is not a complete chronological firehose of every review. It tracks *changes in the reviews Apple chooses to show*. How often Apple rotates that set varies; verify cadence for your app before promising alerts on a schedule.
 
